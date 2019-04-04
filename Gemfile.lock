@@ -866,6 +866,7 @@ DEPENDENCIES
   fcrepo_wrapper
   hydra-role-management
   hyrax (~> 2.5.0)
+  iiif_manifest
   iso-639
   jbuilder (~> 2.5)
   jquery-rails

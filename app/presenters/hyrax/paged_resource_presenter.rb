@@ -9,6 +9,10 @@ module Hyrax
       HoldingLocationAttributeRenderer.new(solr_document.holding_location).render_dl_row
     end
 
+    def search_service
+      Rails.application.routes.url_helpers.solr_document_iiif_search_url(solr_document.id)
+    end
+
     # FIXME: delegate to solr_document?
     def logical_order
       @logical_order ||=

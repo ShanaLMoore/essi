@@ -53,4 +53,5 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   # config.active_job.queue_adapter = :inline
+  config.action_mailer.default_url_options = { host: "localhost:3000" }
 end
