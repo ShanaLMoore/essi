@@ -21,7 +21,7 @@ configure_blacklight do |config|
 
     # configuration for Blacklight IIIF Content Search
     config.iiif_search = {
-      full_text_field: 'text_timv',
+      full_text_field: 'text_tesim',
       object_relation_field: 'is_page_of_ssi',
       supported_params: %w[q page],
       autocomplete_handler: 'iiif_suggest',
@@ -45,7 +45,7 @@ configure_blacklight do |config|
     config.default_solr_params = {
       qt: "search",
       rows: 10,
-      qf: "title_tesim description_tesim creator_tesim keyword_tesim text_timv"
+      qf: "title_tesim description_tesim creator_tesim keyword_tesim text_tesim",
     }
 
     # solr field configuration for document/show views

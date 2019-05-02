@@ -64,9 +64,7 @@ module ESSI
         # return the first file set id
         # @return [String]
         def file_set_id
-          file_set_ids = parent_document['file_set_ids_ssim']
-          raise "#{self.class}: NO FILE SET ID" if file_set_ids.blank?
-          file_set_ids.first
+          return document['id']
         end
     end
   end

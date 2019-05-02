@@ -3,9 +3,8 @@ RSpec.describe BlacklightIiifSearch::AnnotationBehavior do
   let(:parent_id) { 'abc123' }
   let(:file_set_id) { '987654' }
   let(:page_document) do
-    SolrDocument.new('id' => 'hijklm',
-                     'issue_id_ssi' => parent_id,
-                     'file_set_ids_ssim' => [file_set_id])
+    SolrDocument.new('id' => file_set_id,
+                     'work_id_ssi' => parent_id)
   end
   let(:controller) { CatalogController.new }
   let(:coordinates) do
