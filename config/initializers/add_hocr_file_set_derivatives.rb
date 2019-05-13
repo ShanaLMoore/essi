@@ -4,6 +4,7 @@ module FileSetDerivativesServiceExtensions
     case mime_type
       when *file_set.class.image_mime_types
         create_hocr_derivatives(filename)
+        create_word_boundaries
     end
   end
 
@@ -18,6 +19,20 @@ module FileSetDerivativesServiceExtensions
                                      container: 'extracted_text',
                                      language: file_set.ocr_language,
                                      url: uri }]})
+    end
+
+    def create_word_boundaries
+      return unless ESSI.config.dig(:essi, :create_word_boundaries)
+      file_set.reload
+      return unless file_set.extracted_text.present?
+      WordBoundariesRunner.create(file_set,
+                       { source: :extracted_text,
+                         outputs: [{ label: "#{file_set.id}-json.json",
+                                     mime_type: 'application/json; charset=utf-8',
+                                     format: 'json',
+                                     container: 'transcript',
+                                     url: uri }]})
+
     end
 end
 

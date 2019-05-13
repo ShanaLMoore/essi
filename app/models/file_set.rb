@@ -2,6 +2,9 @@
 class FileSet < ActiveFedora::Base
   include ::Hyrax::FileSetBehavior
 
+  # FIXME: find a more appropriate file use?
+  directly_contains_one :transcript, through: :files, type: ::RDF::URI('http://pcdm.org/use#Transcript'), class_name: 'Hydra::PCDM::File'
+
   self.indexer = ESSI::FileSetIndexer
 
   def ocr_language
