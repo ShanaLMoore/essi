@@ -57,7 +57,7 @@ module ESSI
           words = []
           word_boundaries.each do |word, boundaries|
             boundaries.each do |boundary|
-              words << { word: word, coordinates: [boundary['x0'], boundary['y0'], (boundary['x1'] - boundary['x0']), (boundary['y1'] - boundary['y0'])] }.with_indifferent_access
+              words << { word: word, coordinates: [boundary['x0'].to_i, boundary['y0'].to_i, (boundary['x1'].to_i - boundary['x0'].to_i), (boundary['y1'].to_i - boundary['y0'].to_i)] }.with_indifferent_access
             end
           end
           { words: words }.with_indifferent_access
