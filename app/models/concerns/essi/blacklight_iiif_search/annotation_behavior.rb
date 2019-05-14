@@ -32,7 +32,7 @@ module ESSI
           default_coords = '#xywh=0,0,0,0'
           coords_data = coordinates_raw
           return default_coords if query.blank? || coords_data.blank?
-          coords_json = JSON.parse(coords_data)
+          coords_json = parsed_coordinates(JSON.parse(coords_data))
           return default_coords unless coords_json['words']
           matches = coords_json['words'].select do |k, _v|
             k['word'].downcase =~ /#{query.downcase}/
@@ -48,7 +48,19 @@ module ESSI
         def coordinates_raw
           # TO-DO We need an equivalent thing to return from word boundaries file
           # NewspaperWorks::Data::WorkDerivatives.new(file_set_id).data('json')
-          ''
+          # TO-DO solrize this, then get it from solr
+          FileSet.find(file_set_id)&.transcript&.content
+        end
+
+        # converts a word_boundaries Hash into annotation coordinates
+        def parsed_coordinates(word_boundaries)
+          words = []
+          word_boundaries.each do |word, boundaries|
+            boundaries.each do |boundary|
+              words << { word: word, coordinates: [boundary['x0'], boundary['y0'], (boundary['x1'] - boundary['x0']), (boundary['y1'] - boundary['y0'])] }.with_indifferent_access
+            end
+          end
+          { words: words }.with_indifferent_access
         end
 
         ##
