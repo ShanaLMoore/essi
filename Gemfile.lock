@@ -58,7 +58,7 @@ GEM
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
-    addressable (2.5.2)
+    addressable (2.6.0)
       public_suffix (>= 2.0.2, < 4.0)
     almond-rails (0.1.0)
       rails (>= 4.2, < 6)
@@ -295,7 +295,7 @@ GEM
       tilt
     hamster (3.0.0)
       concurrent-ruby (~> 1.0)
-    hashdiff (0.3.7)
+    hashdiff (0.3.9)
     hashie (3.5.7)
     hiredis (0.6.3)
     htmlentities (4.3.4)
@@ -720,7 +720,7 @@ GEM
     ruby-progressbar (1.10.0)
     ruby_dep (1.5.0)
     rubyzip (1.2.2)
-    safe_yaml (1.0.4)
+    safe_yaml (1.0.5)
     samvera-nesting_indexer (2.0.0)
       dry-equalizer
     sass (3.6.0)
@@ -835,7 +835,7 @@ GEM
       activemodel (>= 5.0)
       bindex (>= 0.4.0)
       railties (>= 5.0)
-    webmock (3.4.2)
+    webmock (3.5.1)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff
