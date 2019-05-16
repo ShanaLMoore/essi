@@ -35,7 +35,7 @@ RSpec.feature 'Create a PagedResource', js: true do
 
       # If you generate more than one work uncomment these lines
       choose "payload_concern", option: "PagedResource"
-      VCR.use_cassette('holding_locations') do
+      VCR.use_cassette('iucat_libraries_up') do
         click_button "Create work"
       end
 
