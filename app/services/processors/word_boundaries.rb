@@ -1,11 +1,15 @@
 module Processors
   class WordBoundaries < Hydra::Derivatives::Processors::Processor
     # Run the word boundary extraction and save the result
-    # @return [TrueClass,FalseClass] was the process successful.
+    # Result is saved mid-process as a tmp file to work around VCR error
+    # See notes on pr #35 in github, story HPT-1561 in JIRA
     def process
-      output_file_service.call(extract, directives)
+      temp_file_name = output_file('tmp')
+      File.open(temp_file_name, 'w') { |file| file.write(extract) }
+      output_file_service.call(File.open(temp_file_name, 'rb'), directives)
+      File.unlink(temp_file_name)
     end
-
+    
     private
       ##
       # Extract word boundaries from the hocr content
@@ -13,6 +17,10 @@ module Processors
       # @return [String] The extracted json
       def extract
         parse_word_boundaries(file_content).to_json
+      end
+
+      def output_file(file_suffix)
+        Dir::Tmpname.create(['sufia', ".#{file_suffix}"], Hydra::Derivatives.temp_file_base) {}
       end
 
       def file_content
