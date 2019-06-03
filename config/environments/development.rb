@@ -52,6 +52,5 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  # config.active_job.queue_adapter = :inline
-  config.action_mailer.default_url_options = { host: "localhost:3000" }
+  config.active_job.queue_adapter = ESSI.config[:rails][:active_job][:queue_adapter].to_sym
 end

@@ -18,6 +18,8 @@ default: &default
     cache:
       store: memory_store
       options:
+    active_job:
+      queue_adapter: async
   derivatives:
     path: <%= Rails.root.join("tmp/derivatives") %>
   iucat_libraries:
