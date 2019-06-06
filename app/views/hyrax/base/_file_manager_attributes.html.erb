@@ -1,1 +1,26 @@
-OCR Text Available: <%= ocr_check(node.id) %>
+OCR: <%= ocr_check(node.id) %>
+
+<% hints = ['', 'non-paged', 'facing-pages'] %>
+<% hints_t = I18n.t('simple_form.options.file_set.viewing_hint').map{|key,val| [key.to_sym, val.to_s] }.to_h %>
+<% selected_hint = node.viewing_hint || hints.first %>
+<div class="form-group <%= f.object.model_name.singular %>_viewing_hint">
+  <%= f.input :viewing_hint,
+              as: :hidden,
+              input_html: { data: {member_link: "#{f.object.model_name.singular}_viewing_hint_#{node.id}"},
+                            value: selected_hint,
+                            id: "file_set_viewing_hint_#{node.id}"} %>
+  <% hints.each_with_index do |val, index| %>
+    <div class="radio">
+      <%= content_tag :label do %>
+        <%= tag :input,
+                name: "#{f.object.model_name.singular}_viewing_hint_#{node.id}",
+                id: "#{f.object.model_name.singular}_viewing_hint_#{node.id}_#{val}",
+                type: :radio,
+                value: val,
+                checked: (val == selected_hint),
+                class: 'resource-radio-button' %>
+        <%= hints_t[val.to_sym] %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

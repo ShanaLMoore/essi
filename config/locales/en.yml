@@ -33,3 +33,10 @@ en:
   hello: "Hello world"
   services:
     metadata: "IUCAT"
+  simple_form:
+    options:
+      file_set:
+        viewing_hint:
+          "": 'Single Page'
+          non-paged: 'Non-Paged'
+          facing-pages: 'Facing pages'

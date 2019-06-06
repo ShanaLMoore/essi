@@ -18,6 +18,7 @@ end
 
 # Makes extracted text check available in file details.
 module FileSetPresenterExtensions
+
   def extracted_text?
     ::FileSet.find(id).extracted_text.present?
   end

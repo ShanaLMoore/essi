@@ -6,18 +6,37 @@
   .structure {
     float: inherit;
 
+    .panel-heading,
     .panel-footer,
     .panel-body,
     .list-group-item {
       float: inherit;
     }
   }
-  .panel-heading {
-     color: #333333;
-     background-color: #f5f5f5;
-     border-color: #ddd;
+  [data-action="file-manager"] {
+    .panel-heading {
+      color: #333333;
+      background-color: #f5f5f5;
+      border-color: #ddd;
+      float:none;
+    }
 
-     float:none !important;
+    .file-manager-attributes {
+      width: 100%;
+    }
+
+    li div.panel .member_resource_options {
+      float: inherit;
+      margin-top: 0;
+      padding-top: 0;
+
+      span.radio:first-of-type {
+        margin-top: 0;
+      }
+
+      input[type=radio] {
+        position: absolute;
+      }
+    }
   }
-
 }
