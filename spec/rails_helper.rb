@@ -44,14 +44,10 @@ ActiveJob::Base.queue_adapter = :test
 #       Capybara-provided :selenium_chrome_headless driver (which does not
 #       include the `--no-sandbox` argument).
 Capybara.register_driver :selenium_chrome_headless_sandboxless do |app|
-  capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
-      chromeOptions: {'w3c' => false}
-  )
   browser_options = ::Selenium::WebDriver::Chrome::Options.new
   browser_options.args << '--headless'
   browser_options.args << '--disable-gpu'
   browser_options.args << '--no-sandbox'
-  #Capybara::Selenium::Driver.new(app, browser: :chrome, options: browser_options, desired_capabilities: capabilities)
   Capybara::Selenium::Driver.new(app, browser: :chrome, options: browser_options)
 end
 
