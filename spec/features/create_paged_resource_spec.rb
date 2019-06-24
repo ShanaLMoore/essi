@@ -37,9 +37,9 @@ RSpec.feature 'Create a PagedResource', js: true do
       choose "payload_concern", option: "PagedResource"
       VCR.use_cassette('holding_locations') do
         click_button "Create work"
-        expect(page).to have_content "Add New Paged Resource"
       end
 
+      expect(page).to have_content "Add New Paged Resource"
       click_link "Files" # switch tab
       expect(page).to have_content "Add files"
       expect(page).to have_content "Add folder"
