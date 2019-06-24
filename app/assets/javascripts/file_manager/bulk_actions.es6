@@ -35,7 +35,7 @@ export default class BulkActionManager {
   }
 
   get selected_viewing_hints() {
-    return this.selected_elements.find('input[name="file_set[viewing_hint]"]')
+    return this.selected_elements.find('input[name^="file_set_viewing_hint"]')
   }
 
   get selected_viewing_hint_values() {
