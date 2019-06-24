@@ -51,7 +51,8 @@ Capybara.register_driver :selenium_chrome_headless_sandboxless do |app|
   browser_options.args << '--headless'
   browser_options.args << '--disable-gpu'
   browser_options.args << '--no-sandbox'
-  Capybara::Selenium::Driver.new(app, browser: :chrome, options: browser_options, desired_capabilities: capabilities)
+  #Capybara::Selenium::Driver.new(app, browser: :chrome, options: browser_options, desired_capabilities: capabilities)
+  Capybara::Selenium::Driver.new(app, browser: :chrome, options: browser_options)
 end
 
 Capybara.default_driver = :rack_test # This is a faster driver
