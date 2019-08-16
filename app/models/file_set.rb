@@ -15,10 +15,4 @@ class FileSet < ActiveFedora::Base
      'eng'].map { |l| Tesseract.try_languages(l) }.select(&:present?).first
   end
 
-  def to_solr(solr_doc = {})
-    super.tap do |doc|
-      doc["word_boundary_tesim"] = extracted_text.content if extracted_text.present?
-    end
-  end
-
 end
